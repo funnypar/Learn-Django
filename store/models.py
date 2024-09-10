@@ -33,6 +33,7 @@ class Customer(models.Model):
     email = models.EmailField(unique= True)
     phone = models.CharField(max_length=12)
     birth_date = models.DateField(null=True)
+    membership = models.CharField(max_length=1,choices=MEMBERSHIP_CHOISES, default=MEMBERSHIP_BRONZE)
 
 class Order(models.Model):
     PAYMENT_PENDING = "P"
