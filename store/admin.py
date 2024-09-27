@@ -28,6 +28,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_editable = ['unit_price']
     list_filter = ['collection', 'last_update',InventoryFilter]
+    prepopulated_fields = {'slug':['title']}
+    autocomplete_fields = ['collection']
 
     @admin.display(ordering='inventory')
     def inventory_status(self,product):
@@ -57,10 +59,12 @@ class CustomerAdmin(admin.ModelAdmin):
 @admin.register(models.Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'placed_at','customer']
+    autocomplete_fields = ['customer']
 
 @admin.register(models.Collection)
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ['title', 'products_count']
+    search_fields = ['title']
 
     @admin.display(ordering='products_count')
     def products_count(self,collection):
