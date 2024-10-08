@@ -6,7 +6,9 @@ from store.models import Collection, Product
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
-        fields = ['id','title']
+        fields = ['id','title','products_count']
+    
+    products_count = serializers.IntegerField()
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -16,3 +18,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
     price = serializers.DecimalField(max_digits=6, decimal_places=2, source='unit_price')
     collection = CollectionSerializer()
+
+
+    
