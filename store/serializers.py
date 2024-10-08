@@ -17,7 +17,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id','title','price','collection']
 
     price = serializers.DecimalField(max_digits=6, decimal_places=2, source='unit_price')
-    collection = CollectionSerializer()
+    # collection = CollectionSerializer()
 
 
     
